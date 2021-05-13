@@ -128,46 +128,53 @@ namespace JuegoDelGatito
             if ((GanoFilas == TamanioGato) || (GanoColumnas == TamanioGato) || (DiagonalInversa == TamanioGato) || (DiagonalPrincipal == TamanioGato))
             {
                 YaHayGanador = true;
+
             }
+            else {
+                //Validar cuando sea empate    
+                bool Empate = true;
 
-
-            //Validar cuando sea empate
-            //else
-            //bool Empate =true;
-            //for(var i=0; i< TamanioGato; i++)
-            //{ 
-            //for(var j=0; j< TamanioGato; j++)
-            //{
-            // if()
-            //Empate = false;
-            //}
-
-            //}
-            //if (Empate)
-            //{
-            //    MessageBox.Show("Esto es un empate ¡Reinicia el juego!");
-            //    IniciarJuego();
-            //}
-
-            if (YaHayGanador)
-            {
-                MessageBox.Show("Ya hay ganador");
-                picGanador.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("f_" + turno);
-                if (turno == 1)
+                for (var i = 0; i < TamanioGato; i++)
                 {
-                    PuntosPlayer1++;
-                    lblplayer1.Text = PuntosPlayer1.ToString();
+                    for (var j = 0; j < TamanioGato; j++)
+                    {
+                        if (Gato[i, j] == 0)
+                        {
+                            Empate = false;
+                        }
+                        else
+                        {
+                            Empate = true;
+                        }
+                    }
                 }
-                else
-                {
-                    PuntosPlayer2++;
-                    lblplayer2.Text = PuntosPlayer2.ToString();
-                }
-            }
 
+                if (Empate == true)
+                {
+                    MessageBox.Show("Esto es un empate ¡Reinicia el juego!");
+                    IniciarJuego();
+                }
+                }
+
+                if (YaHayGanador)
+                {
+                    MessageBox.Show("Ya hay ganador");
+                    picGanador.Image = (Bitmap)Properties.Resources.ResourceManager.GetObject("f_" + turno);
+                    if (turno == 1)
+                    {
+                        PuntosPlayer1++;
+                        lblplayer1.Text = PuntosPlayer1.ToString();
+                    }
+                    else
+                    {
+                        PuntosPlayer2++;
+                        lblplayer2.Text = PuntosPlayer2.ToString();
+                    }
+                }
+
+            
         }
     }
 }
-
 
 
